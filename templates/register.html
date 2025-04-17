@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      </head>
+    <body>
+            <div class="form-wrapper">
+              <form action="/register" method="POST">
+                    <h2>Ar tu nori but sigma?</h2>
+                    <h2> uzsiregistruok !!!!!</h2>
+                    <label for="reg-username"> Tavo gatves vardas:</label><br>
+                    <input type="text" id="reg-username" name="reg-username" placeholder="gerklius" required><br><br>
+                    
+                    <label for="reg-pasword"> 16 skaiciu ant tavo kreditines korteles galo ir galiojimo laikas su 3 security skaiciais:</label><br>
+                    <input type="password" id="reg-password" name="reg-password" placeholder="tyngiu rasyt" required><br><br>
+        
+                    <button type="submit" id="registerButton">patikrinam ar sigma</button>
+                    <p class = "register-link">Nori isbandyti savo aura? <a href="{{ url_for('login') }}">Gryzti i testa</a></p>
+                </form>
+              </div>
+
+              <script src="{{ url_for('static', filename='registrationas.js') }}"></script>
+    </body>
+</html>
