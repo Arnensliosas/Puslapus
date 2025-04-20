@@ -1,5 +1,4 @@
 document.getElementById("registerButton").addEventListener("click", function (event) {
-    event.preventDefault(); // stops the form from actually submitting
 
     const registerName = document.getElementById("reg-username").value.trim();
     const password = document.getElementById("reg-password").value.trim();
@@ -10,6 +9,7 @@ document.getElementById("registerButton").addEventListener("click", function (ev
   } else {
     errorMessage.textContent = "";
     alert("tu gejus");
+    document.querySelector("form").submit();
     
   }
     console.log("register button clicked!");
