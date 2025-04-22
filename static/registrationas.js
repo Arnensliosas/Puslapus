@@ -8,7 +8,6 @@ document.getElementById("registerButton").addEventListener("click", function (ev
       errorMessage.textContent = "Nu susikaupk seni uzpildyk tas eilutes ir uzsiregistruok";
   } else {
     errorMessage.textContent = "";
-    alert("tu gejus");
     document.querySelector("form").submit();
     
   }
