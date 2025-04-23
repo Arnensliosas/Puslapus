@@ -1,16 +1,18 @@
+<!DOCTYPE html>
 <html>
-    <head> 
-        <title>Mano puslapus</title>
-    </head>
-
-    <body style="background-color:orange">
+<head>
+    <meta charset="UTF-8">
+    <title>sigma boy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="center-box">
         <h1>this is where the shit begins</h1>
-
-        
-
-          <div class="bottom-links">
-            <p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">nemokamas 5 euru gift cardas</a></p>
-
-        </div>
-    </body>
+        <h2>{{ username }} yra lopas</h2>
+    
+        <form action="{{ url_for('logout') }}" method="GET">
+            <button type="submit" class="logout-button">Atsijungti</button>
+        </form>
+    </div>    
+</body>
 </html>
