@@ -7,8 +7,8 @@
     <body style="background-color:orange">
         <h1>Kas skaitys tas gaidys</h1>
         <div class="form-wrapper">
-            <form action="/login" method="POST">
-                <h2>Sigma testas</h2>
+            <form action="/login" method="POST" id="loginForm">
+                <h2>Crazy loginas</h2>
 
                 <label for="username"> Tavo gatves vardas:</label><br>
                 <input type="text" id="username" name="username" placeholder="lil dundulis" required><br><br>
@@ -18,12 +18,6 @@
     
                 <button type="submit" id="loginButton">patikrinam ar sigma</button>
                 <p id="error-message" style="color: red;" class="error-message"></p>
-
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <p class="login-error">{{ messages[0] }}</p>
-                    {% endif %}
-                {% endwith %}
                 
                 <p class = "register-link">Esi uztikrintas kad neesi sigma? <a href="{{ url_for('register') }}">Paspausk cia</a></p>
             </form>
@@ -34,8 +28,8 @@
           <div class="bottom-links">
             <a href="https://www.youtube.com/watch?v=ok-plXXHlWw">vilius gejus</a>
             <p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">nemokamas 5 euru gift cardas</a></p>
-
         </div>
+        
           <script src="{{ url_for('static', filename='loginas.js') }}"></script>
     </body>
 </html>

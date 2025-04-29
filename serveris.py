@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, session
+from flask import Flask, render_template, request, abort, redirect, url_for, session, jsonify
 import bcrypt
 import csv
 
@@ -18,14 +18,12 @@ def register():
 def game():
     print(session)
     if 'username' not in session:
-        flash("nu va bandyk is naujo")
-        return redirect(url_for('login'))
+        abort(401)
     return render_template('namuDarbai.html', username=session['username'])
 
 @app.route('/logout')
 def logout():
     session.clear()
-    flash("Atsijungei")
     return redirect(url_for('login'))
 
 
@@ -43,10 +41,9 @@ def handle_login():
             if username == stored_username:
                 if bcrypt.checkpw(password.encode(), stored_hash.encode()): 
                     session['username'] = username
-                    return redirect(url_for('game'))
-    
-    flash("❌ ot ir neteisingai ivedei kazka")
-    return redirect(url_for('login'))
+                    return jsonify({"success": True})
+
+    return jsonify({"success": False, "message": "❌ ot ir neteisingai ivedei kazka"})
 
 
 # Handle register POST
@@ -55,13 +52,19 @@ def handle_register():
     username = request.form.get('reg-username')
     password = request.form.get('reg-password')
 
+    with open('users.csv', mode='r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if username == row[0]:
+                return jsonify({"success": False, "message": "toks vardas jau egzistuoja"})
+            
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     with open('users.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([username, hashed_password.decode('utf-8')])
 
-    return redirect(url_for('login'))
+    return jsonify({"success": True, "message": "mldc prisiregistravai"})
 
 
 if __name__ == '__main__':

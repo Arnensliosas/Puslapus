@@ -5,18 +5,18 @@
       </head>
     <body>
             <div class="form-wrapper">
-              <form action="/register" method="POST">
-                    <h2>Ar tu nori but sigma?</h2>
-                    <h2> uzsiregistruok !!!!!</h2>
+              <form action="/register" method="POST" id="registerForm">
+                    <h2>Negeju registracija</h2>
                     <label for="reg-username"> Tavo gatves vardas:</label><br>
                     <input type="text" id="reg-username" name="reg-username" placeholder="gerklius" required><br><br>
                     
-                    <label for="reg-pasword"> 16 skaiciu ant tavo kreditines korteles galo ir galiojimo laikas su 3 security skaiciais:</label><br>
+                    <label for="reg-password"> 16 skaiciu ant tavo kreditines korteles galo ir galiojimo laikas su 3 security skaiciais:</label><br>
                     <input type="password" id="reg-password" name="reg-password" placeholder="tyngiu rasyt" required><br><br>
         
                     <button type="submit" id="registerButton">Uzsiregistruok</button>
-                    <p id="error-message" style="color: red;" class="error-message"></p>
-                    <p class = "register-link">Nori isbandyti savo aura? <a href="{{ url_for('login') }}">Gryzti i testa</a></p>
+                    <p id="reg-error-message" style="color: red;" class="error-message"></p>
+
+                    <p class = "register-link"> Nori isbandyti savo aura? <a href="{{ url_for('login') }}">Gryzti i testa</a></p>
                 </form>
               </div>
 
